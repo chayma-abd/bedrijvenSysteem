@@ -1,4 +1,5 @@
 public class Bedrijf {
+    // Fields (eigenschappen)
     private String naam;
     private String contactPersoon;
     private String email;
@@ -16,6 +17,63 @@ public class Bedrijf {
         this.telefoon = telefoon;
         this.adres = adres;
         this.omschrijving = omschrijving;
+        this.zoekterm = zoekterm;
+    }
+
+    // Getters en Setters
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getContactPersoon() {
+        return contactPersoon;
+    }
+
+    public void setContactPersoon(String contactPersoon) {
+        this.contactPersoon = contactPersoon;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelefoon() {
+        return telefoon;
+    }
+
+    public void setTelefoon(String telefoon) {
+        this.telefoon = telefoon;
+    }
+
+    public String getAdres() {
+        return adres;
+    }
+
+    public void setAdres(String adres) {
+        this.adres = adres;
+    }
+
+    public String getOmschrijving() {
+        return omschrijving;
+    }
+
+    public void setOmschrijving(String omschrijving) {
+        this.omschrijving = omschrijving;
+    }
+
+    public String getZoekterm() {
+        return zoekterm;
+    }
+
+    public void setZoekterm(String zoekterm) {
         this.zoekterm = zoekterm;
     }
 }
