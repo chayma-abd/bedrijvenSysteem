@@ -1,5 +1,4 @@
 public class Bedrijf {
-    // Fields (eigenschappen)
     private String naam;
     private String contactPersoon;
     private String email;
@@ -8,7 +7,6 @@ public class Bedrijf {
     private String omschrijving;
     private String zoekterm;
 
-    // Constructor
     public Bedrijf(String naam, String contactPersoon, String email, String telefoon,
                    String adres, String omschrijving, String zoekterm) {
         this.naam = naam;
@@ -20,7 +18,6 @@ public class Bedrijf {
         this.zoekterm = zoekterm;
     }
 
-    // Getters en Setters
     public String getNaam() {
         return naam;
     }
@@ -75,5 +72,18 @@ public class Bedrijf {
 
     public void setZoekterm(String zoekterm) {
         this.zoekterm = zoekterm;
+    }
+
+    @Override
+    public String toString() {
+        return "Bedrijf{" +
+                "naam='" + naam + '\'' +
+                ", contactPersoon='" + contactPersoon + '\'' +
+                ", email='" + email + '\'' +
+                ", telefoon='" + telefoon + '\'' +
+                ", adres='" + adres + '\'' +
+                ", omschrijving='" + omschrijving + '\'' +
+                ", zoekterm='" + zoekterm + '\'' +
+                '}';
     }
 }
