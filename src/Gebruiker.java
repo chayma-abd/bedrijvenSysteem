@@ -1,9 +1,9 @@
 public abstract class Gebruiker {
     private String gebruikersnaam;
     private String wachtwoord;
-    private String rol;
+    private Rol rol;
 
-    public Gebruiker(String gebruikersnaam, String wachtwoord, String rol) {
+    public Gebruiker(String gebruikersnaam, String wachtwoord, Rol rol) {
         this.gebruikersnaam = gebruikersnaam;
         this.wachtwoord = wachtwoord;
         this.rol = rol;
@@ -25,11 +25,11 @@ public abstract class Gebruiker {
         this.wachtwoord = wachtwoord;
     }
 
-    public String getRol() {
+    public Rol getRol() {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public void setRol(Rol rol) {
         this.rol = rol;
     }
 
@@ -37,7 +37,7 @@ public abstract class Gebruiker {
     public String toString() {
         return "Gebruiker{" +
                 "gebruikersnaam='" + gebruikersnaam + '\'' +
-                ", rol='" + rol + '\'' +
+                ", rol=" + rol +
                 '}';
     }
 }
