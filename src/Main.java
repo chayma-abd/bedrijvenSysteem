@@ -18,7 +18,39 @@ public class Main {
         bedrijven.add(new Bedrijf("FinanceWise", "Wouter Maes", "wouter@financewise.be", "0498345678",
                 "Bankstraat 12, Brussel", "Financiële diensten en boekhouding", "sponsor, gastles"));
 
+        // Gebruikers aanmaken (testdata)
+        ArrayList<Gebruiker> gebruikers = new ArrayList<>();
+        gebruikers.add(new Student("student1", "1234"));
+        gebruikers.add(new Docent("docent1", "1234"));
+        gebruikers.add(new Admin("admin1", "1234"));
+
+        Scanner scanner = new Scanner(System.in);
+
         System.out.println("=== Welkom bij het KET Bedrijven Systeem ===");
         System.out.println("Testdata geladen: " + bedrijven.size() + " bedrijven.");
+        System.out.println();
+
+        // Inloggen
+        System.out.print("Gebruikersnaam: ");
+        String gebruikersnaam = scanner.nextLine();
+
+        System.out.print("Wachtwoord: ");
+        String wachtwoord = scanner.nextLine();
+
+        // Controleren of gebruiker bestaat
+        Gebruiker ingelogdeGebruiker = null;
+        for (Gebruiker g : gebruikers) {
+            if (g.getGebruikersnaam().equals(gebruikersnaam) && g.getWachtwoord().equals(wachtwoord)) {
+                ingelogdeGebruiker = g;
+                break;
+            }
+        }
+
+        if (ingelogdeGebruiker == null) {
+            System.out.println("Ongeldige gebruikersnaam of wachtwoord!");
+        } else {
+            System.out.println("Welkom " + ingelogdeGebruiker.getGebruikersnaam() + "!");
+            System.out.println("Je rol is: " + ingelogdeGebruiker.getRol());
+        }
     }
 }
