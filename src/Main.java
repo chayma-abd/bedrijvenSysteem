@@ -48,9 +48,40 @@ public class Main {
 
         if (ingelogdeGebruiker == null) {
             System.out.println("Ongeldige gebruikersnaam of wachtwoord!");
-        } else {
-            System.out.println("Welkom " + ingelogdeGebruiker.getGebruikersnaam() + "!");
-            System.out.println("Je rol is: " + ingelogdeGebruiker.getRol());
+            return; // Programma stoppen
+        }
+
+        System.out.println("Welkom " + ingelogdeGebruiker.getGebruikersnaam() + "!");
+        System.out.println("Je rol is: " + ingelogdeGebruiker.getRol());
+        System.out.println();
+
+        // Hoofdmenu met while-loop
+        boolean gestopt = false;
+        while (!gestopt) {
+            System.out.println("=== Hoofdmenu ===");
+            System.out.println("1. Zoeken");
+            System.out.println("2. Afdrukken naar bestand");
+            System.out.println("3. Afsluiten");
+
+            System.out.print("Kies een optie: ");
+            int keuze = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (keuze) {
+                case 1:
+                    System.out.println("Zoeken... (nog niet geïmplementeerd)");
+                    break;
+                case 2:
+                    System.out.println("Afdrukken... (nog niet geïmplementeerd)");
+                    break;
+                case 3:
+                    System.out.println("Programma afgesloten.");
+                    gestopt = true;
+                    break;
+                default:
+                    System.out.println("Ongeldige keuze!");
+            }
+            System.out.println();
         }
     }
 }
