@@ -55,7 +55,7 @@ public class Main {
         System.out.println("Je rol is: " + ingelogdeGebruiker.getRol());
         System.out.println();
 
-        // Hoofdmenu met while-loop en rol-gebaseerd menu
+        // Hoofdmenu
         boolean gestopt = false;
         while (!gestopt) {
             System.out.println("=== Hoofdmenu ===");
@@ -80,7 +80,7 @@ public class Main {
             if (ingelogdeGebruiker.getRol() == Rol.ADMIN) {
                 switch (keuze) {
                     case 1:
-                        System.out.println("Zoeken... (nog niet geïmplementeerd)");
+                        zoekBedrijven(bedrijven, scanner);
                         break;
                     case 2:
                         System.out.println("Afdrukken... (nog niet geïmplementeerd)");
@@ -107,7 +107,7 @@ public class Main {
             } else {
                 switch (keuze) {
                     case 1:
-                        System.out.println("Zoeken... (nog niet geïmplementeerd)");
+                        zoekBedrijven(bedrijven, scanner);
                         break;
                     case 2:
                         System.out.println("Afdrukken... (nog niet geïmplementeerd)");
@@ -125,7 +125,9 @@ public class Main {
             }
             System.out.println();
         }
-    }    // Methode om te zoeken naar bedrijven
+    }
+
+    // Methode om te zoeken naar bedrijven
     public static void zoekBedrijven(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
         System.out.print("Voer een zoekterm in (naam, omschrijving of zoekterm): ");
         String zoekterm = scanner.nextLine().toLowerCase();
