@@ -125,5 +125,32 @@ public class Main {
             }
             System.out.println();
         }
+    }    // Methode om te zoeken naar bedrijven
+    public static void zoekBedrijven(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
+        System.out.print("Voer een zoekterm in (naam, omschrijving of zoekterm): ");
+        String zoekterm = scanner.nextLine().toLowerCase();
+
+        ArrayList<Bedrijf> resultaten = new ArrayList<>();
+
+        for (Bedrijf b : bedrijven) {
+            if (b.getNaam().toLowerCase().contains(zoekterm) ||
+                    b.getOmschrijving().toLowerCase().contains(zoekterm) ||
+                    b.getZoekterm().toLowerCase().contains(zoekterm)) {
+                resultaten.add(b);
+            }
+        }
+
+        if (resultaten.isEmpty()) {
+            System.out.println("Geen bedrijven gevonden voor: " + zoekterm);
+        } else {
+            System.out.println("=== Zoekresultaten (" + resultaten.size() + " bedrijven) ===");
+            for (Bedrijf b : resultaten) {
+                System.out.println("- " + b.getNaam() + " (" + b.getOmschrijving() + ")");
+                System.out.println("  Contact: " + b.getContactPersoon() + " - " + b.getEmail());
+                System.out.println("  Telefoon: " + b.getTelefoon());
+                System.out.println("  Adres: " + b.getAdres());
+                System.out.println();
+            }
+        }
     }
 }
