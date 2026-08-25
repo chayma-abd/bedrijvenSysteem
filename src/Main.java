@@ -48,38 +48,80 @@ public class Main {
 
         if (ingelogdeGebruiker == null) {
             System.out.println("Ongeldige gebruikersnaam of wachtwoord!");
-            return; // Programma stoppen
+            return;
         }
 
         System.out.println("Welkom " + ingelogdeGebruiker.getGebruikersnaam() + "!");
         System.out.println("Je rol is: " + ingelogdeGebruiker.getRol());
         System.out.println();
 
-        // Hoofdmenu met while-loop
+        // Hoofdmenu met while-loop en rol-gebaseerd menu
         boolean gestopt = false;
         while (!gestopt) {
             System.out.println("=== Hoofdmenu ===");
             System.out.println("1. Zoeken");
             System.out.println("2. Afdrukken naar bestand");
-            System.out.println("3. Afsluiten");
+
+            if (ingelogdeGebruiker.getRol() == Rol.ADMIN) {
+                System.out.println("3. Bedrijf toevoegen");
+                System.out.println("4. Bedrijf aanpassen");
+                System.out.println("5. Bedrijf verwijderen");
+                System.out.println("6. Uitloggen");
+                System.out.println("7. Afsluiten");
+            } else {
+                System.out.println("3. Uitloggen");
+                System.out.println("4. Afsluiten");
+            }
 
             System.out.print("Kies een optie: ");
             int keuze = scanner.nextInt();
             scanner.nextLine();
 
-            switch (keuze) {
-                case 1:
-                    System.out.println("Zoeken... (nog niet geïmplementeerd)");
-                    break;
-                case 2:
-                    System.out.println("Afdrukken... (nog niet geïmplementeerd)");
-                    break;
-                case 3:
-                    System.out.println("Programma afgesloten.");
-                    gestopt = true;
-                    break;
-                default:
-                    System.out.println("Ongeldige keuze!");
+            if (ingelogdeGebruiker.getRol() == Rol.ADMIN) {
+                switch (keuze) {
+                    case 1:
+                        System.out.println("Zoeken... (nog niet geïmplementeerd)");
+                        break;
+                    case 2:
+                        System.out.println("Afdrukken... (nog niet geïmplementeerd)");
+                        break;
+                    case 3:
+                        System.out.println("Toevoegen... (nog niet geïmplementeerd)");
+                        break;
+                    case 4:
+                        System.out.println("Aanpassen... (nog niet geïmplementeerd)");
+                        break;
+                    case 5:
+                        System.out.println("Verwijderen... (nog niet geïmplementeerd)");
+                        break;
+                    case 6:
+                        System.out.println("Uitgelogd!");
+                        gestopt = true;
+                        break;
+                    case 7:
+                        System.out.println("Programma afgesloten.");
+                        return;
+                    default:
+                        System.out.println("Ongeldige keuze!");
+                }
+            } else {
+                switch (keuze) {
+                    case 1:
+                        System.out.println("Zoeken... (nog niet geïmplementeerd)");
+                        break;
+                    case 2:
+                        System.out.println("Afdrukken... (nog niet geïmplementeerd)");
+                        break;
+                    case 3:
+                        System.out.println("Uitgelogd!");
+                        gestopt = true;
+                        break;
+                    case 4:
+                        System.out.println("Programma afgesloten.");
+                        return;
+                    default:
+                        System.out.println("Ongeldige keuze!");
+                }
             }
             System.out.println();
         }
