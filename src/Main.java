@@ -155,4 +155,29 @@ public class Main {
             }
         }
     }
+
+    // Methode om zoekresultaten af te drukken naar een bestand
+    public static void printNaarBestand(ArrayList<Bedrijf> resultaten, String zoekterm) {
+        try {
+            java.io.FileWriter writer = new java.io.FileWriter("zoekresultaten.txt");
+            writer.write("=== Zoekresultaten voor: " + zoekterm + " ===\n");
+            writer.write("Aantal gevonden bedrijven: " + resultaten.size() + "\n\n");
+
+            for (Bedrijf b : resultaten) {
+                writer.write("Bedrijf: " + b.getNaam() + "\n");
+                writer.write("Contact: " + b.getContactPersoon() + "\n");
+                writer.write("Email: " + b.getEmail() + "\n");
+                writer.write("Telefoon: " + b.getTelefoon() + "\n");
+                writer.write("Adres: " + b.getAdres() + "\n");
+                writer.write("Omschrijving: " + b.getOmschrijving() + "\n");
+                writer.write("Zoekterm: " + b.getZoekterm() + "\n");
+                writer.write("------------------------\n");
+            }
+
+            writer.close();
+            System.out.println("Zoekresultaten zijn opgeslagen in 'zoekresultaten.txt'");
+        } catch (java.io.IOException e) {
+            System.out.println("Fout bij het wegschrijven naar bestand: " + e.getMessage());
+        }
+    }
 }
