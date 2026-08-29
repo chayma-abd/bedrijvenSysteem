@@ -1,4 +1,6 @@
 public class Bedrijf {
+    public static final String TYPE = "BEDRIJF";
+
     private String naam;
     private String contactPersoon;
     private String email;
