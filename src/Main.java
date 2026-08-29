@@ -3,10 +3,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Lijst met alle bedrijven
         ArrayList<Bedrijf> bedrijven = new ArrayList<>();
 
-        // Testdata toevoegen - 5 bedrijven
         bedrijven.add(new Bedrijf("TechNova", "Jan Peeters", "jan@technova.be", "0495123456",
                 "Brusselsesteenweg 100, Brussel", "Cybersecurity en IT-oplossingen", "stagebedrijf"));
         bedrijven.add(new Bedrijf("GreenEnergy", "Marie Dupont", "marie@greenenergy.eu", "0478987654",
@@ -18,7 +16,6 @@ public class Main {
         bedrijven.add(new Bedrijf("FinanceWise", "Wouter Maes", "wouter@financewise.be", "0498345678",
                 "Bankstraat 12, Brussel", "Financiële diensten en boekhouding", "sponsor, gastles"));
 
-        // Gebruikers aanmaken (testdata)
         ArrayList<Gebruiker> gebruikers = new ArrayList<>();
         gebruikers.add(new Student("student1", "1234"));
         gebruikers.add(new Docent("docent1", "1234"));
@@ -30,14 +27,12 @@ public class Main {
         System.out.println("Testdata geladen: " + bedrijven.size() + " bedrijven.");
         System.out.println();
 
-        // Inloggen
         System.out.print("Gebruikersnaam: ");
         String gebruikersnaam = scanner.nextLine();
 
         System.out.print("Wachtwoord: ");
         String wachtwoord = scanner.nextLine();
 
-        // Controleren of gebruiker bestaat
         Gebruiker ingelogdeGebruiker = null;
         for (Gebruiker g : gebruikers) {
             if (g.getGebruikersnaam().equals(gebruikersnaam) && g.getWachtwoord().equals(wachtwoord)) {
@@ -55,7 +50,6 @@ public class Main {
         System.out.println("Je rol is: " + ingelogdeGebruiker.getRol());
         System.out.println();
 
-        // Hoofdmenu
         boolean gestopt = false;
         while (!gestopt) {
             System.out.println("=== Hoofdmenu ===");
@@ -127,10 +121,14 @@ public class Main {
         }
     }
 
-    // Methode om te zoeken naar bedrijven
     public static void zoekBedrijven(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
         System.out.print("Voer een zoekterm in (naam, omschrijving of zoekterm): ");
         String zoekterm = scanner.nextLine().toLowerCase();
+
+        if (zoekterm.trim().isEmpty()) {
+            System.out.println("Voer een geldige zoekterm in!");
+            return;
+        }
 
         ArrayList<Bedrijf> resultaten = new ArrayList<>();
 
@@ -156,10 +154,14 @@ public class Main {
         }
     }
 
-    // Methode om af te drukken naar bestand
     public static void afdrukken(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
         System.out.print("Voer een zoekterm in om af te drukken: ");
         String zoekterm = scanner.nextLine().toLowerCase();
+
+        if (zoekterm.trim().isEmpty()) {
+            System.out.println("Voer een geldige zoekterm in!");
+            return;
+        }
 
         ArrayList<Bedrijf> resultaten = new ArrayList<>();
 
@@ -178,7 +180,6 @@ public class Main {
         }
     }
 
-    // Methode om zoekresultaten af te drukken naar een bestand
     public static void printNaarBestand(ArrayList<Bedrijf> resultaten, String zoekterm) {
         try {
             java.io.FileWriter writer = new java.io.FileWriter("zoekresultaten.txt");
@@ -186,13 +187,7 @@ public class Main {
             writer.write("Aantal gevonden bedrijven: " + resultaten.size() + "\n\n");
 
             for (Bedrijf b : resultaten) {
-                writer.write("Bedrijf: " + b.getNaam() + "\n");
-                writer.write("Contact: " + b.getContactPersoon() + "\n");
-                writer.write("Email: " + b.getEmail() + "\n");
-                writer.write("Telefoon: " + b.getTelefoon() + "\n");
-                writer.write("Adres: " + b.getAdres() + "\n");
-                writer.write("Omschrijving: " + b.getOmschrijving() + "\n");
-                writer.write("Zoekterm: " + b.getZoekterm() + "\n");
+                writer.write(b.getAfdrukInfo() + "\n");
                 writer.write("------------------------\n");
             }
 
@@ -203,7 +198,6 @@ public class Main {
         }
     }
 
-    // Methode om een bedrijf toe te voegen (alleen admin)
     public static void bedrijfToevoegen(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
         System.out.println("=== Nieuw bedrijf toevoegen ===");
 
@@ -235,11 +229,15 @@ public class Main {
         System.out.println("Totaal aantal bedrijven: " + bedrijven.size());
     }
 
-    // Methode om een bedrijf aan te passen (alleen admin)
     public static void bedrijfAanpassen(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
         System.out.println("=== Bedrijf aanpassen ===");
         System.out.print("Voer de naam van het bedrijf in dat je wilt aanpassen: ");
         String naam = scanner.nextLine();
+
+        if (naam.trim().isEmpty()) {
+            System.out.println("Voer een geldige naam in!");
+            return;
+        }
 
         Bedrijf teAanpassen = null;
         for (Bedrijf b : bedrijven) {
@@ -303,11 +301,15 @@ public class Main {
         System.out.println("Bedrijf is succesvol aangepast!");
     }
 
-    // Methode om een bedrijf te verwijderen (alleen admin)
     public static void bedrijfVerwijderen(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
         System.out.println("=== Bedrijf verwijderen ===");
         System.out.print("Voer de naam van het bedrijf in dat je wilt verwijderen: ");
         String naam = scanner.nextLine();
+
+        if (naam.trim().isEmpty()) {
+            System.out.println("Voer een geldige naam in!");
+            return;
+        }
 
         Bedrijf teVerwijderen = null;
         for (Bedrijf b : bedrijven) {

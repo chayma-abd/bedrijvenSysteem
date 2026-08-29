@@ -1,4 +1,4 @@
-public class Bedrijf {
+public class Bedrijf implements Afdrukbaar {
     public static final String TYPE = "BEDRIJF";
 
     private String naam;
@@ -87,5 +87,16 @@ public class Bedrijf {
                 ", omschrijving='" + omschrijving + '\'' +
                 ", zoekterm='" + zoekterm + '\'' +
                 '}';
+    }
+
+    @Override
+    public String getAfdrukInfo() {
+        return "Bedrijf: " + naam + "\n" +
+                "Contact: " + contactPersoon + "\n" +
+                "Email: " + email + "\n" +
+                "Telefoon: " + telefoon + "\n" +
+                "Adres: " + adres + "\n" +
+                "Omschrijving: " + omschrijving + "\n" +
+                "Zoekterm: " + zoekterm;
     }
 }
