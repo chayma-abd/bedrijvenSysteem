@@ -86,7 +86,7 @@ public class Main {
                         afdrukken(bedrijven, scanner);
                         break;
                     case 3:
-                        System.out.println("Toevoegen... (nog niet geïmplementeerd)");
+                        bedrijfToevoegen(bedrijven, scanner);
                         break;
                     case 4:
                         System.out.println("Aanpassen... (nog niet geïmplementeerd)");
@@ -201,5 +201,37 @@ public class Main {
         } catch (java.io.IOException e) {
             System.out.println("Fout bij het wegschrijven naar bestand: " + e.getMessage());
         }
+    }
+
+    // Methode om een bedrijf toe te voegen (alleen admin)
+    public static void bedrijfToevoegen(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
+        System.out.println("=== Nieuw bedrijf toevoegen ===");
+
+        System.out.print("Naam: ");
+        String naam = scanner.nextLine();
+
+        System.out.print("Contactpersoon: ");
+        String contactPersoon = scanner.nextLine();
+
+        System.out.print("Email: ");
+        String email = scanner.nextLine();
+
+        System.out.print("Telefoon: ");
+        String telefoon = scanner.nextLine();
+
+        System.out.print("Adres: ");
+        String adres = scanner.nextLine();
+
+        System.out.print("Omschrijving: ");
+        String omschrijving = scanner.nextLine();
+
+        System.out.print("Zoekterm (bv. stagebedrijf, sponsor, gastles): ");
+        String zoekterm = scanner.nextLine();
+
+        Bedrijf nieuwBedrijf = new Bedrijf(naam, contactPersoon, email, telefoon, adres, omschrijving, zoekterm);
+        bedrijven.add(nieuwBedrijf);
+
+        System.out.println("Bedrijf '" + naam + "' is toegevoegd!");
+        System.out.println("Totaal aantal bedrijven: " + bedrijven.size());
     }
 }
