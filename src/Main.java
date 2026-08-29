@@ -83,7 +83,7 @@ public class Main {
                         zoekBedrijven(bedrijven, scanner);
                         break;
                     case 2:
-                        System.out.println("Afdrukken... (nog niet geïmplementeerd)");
+                        afdrukken(bedrijven, scanner);
                         break;
                     case 3:
                         System.out.println("Toevoegen... (nog niet geïmplementeerd)");
@@ -110,7 +110,7 @@ public class Main {
                         zoekBedrijven(bedrijven, scanner);
                         break;
                     case 2:
-                        System.out.println("Afdrukken... (nog niet geïmplementeerd)");
+                        afdrukken(bedrijven, scanner);
                         break;
                     case 3:
                         System.out.println("Uitgelogd!");
@@ -153,6 +153,28 @@ public class Main {
                 System.out.println("  Adres: " + b.getAdres());
                 System.out.println();
             }
+        }
+    }
+
+    // Methode om af te drukken naar bestand
+    public static void afdrukken(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
+        System.out.print("Voer een zoekterm in om af te drukken: ");
+        String zoekterm = scanner.nextLine().toLowerCase();
+
+        ArrayList<Bedrijf> resultaten = new ArrayList<>();
+
+        for (Bedrijf b : bedrijven) {
+            if (b.getNaam().toLowerCase().contains(zoekterm) ||
+                    b.getOmschrijving().toLowerCase().contains(zoekterm) ||
+                    b.getZoekterm().toLowerCase().contains(zoekterm)) {
+                resultaten.add(b);
+            }
+        }
+
+        if (resultaten.isEmpty()) {
+            System.out.println("Geen bedrijven gevonden voor: " + zoekterm);
+        } else {
+            printNaarBestand(resultaten, zoekterm);
         }
     }
 
