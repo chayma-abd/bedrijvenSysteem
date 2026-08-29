@@ -89,7 +89,7 @@ public class Main {
                         bedrijfToevoegen(bedrijven, scanner);
                         break;
                     case 4:
-                        System.out.println("Aanpassen... (nog niet geïmplementeerd)");
+                        bedrijfAanpassen(bedrijven, scanner);
                         break;
                     case 5:
                         bedrijfVerwijderen(bedrijven, scanner);
@@ -233,6 +233,74 @@ public class Main {
 
         System.out.println("Bedrijf '" + naam + "' is toegevoegd!");
         System.out.println("Totaal aantal bedrijven: " + bedrijven.size());
+    }
+
+    // Methode om een bedrijf aan te passen (alleen admin)
+    public static void bedrijfAanpassen(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
+        System.out.println("=== Bedrijf aanpassen ===");
+        System.out.print("Voer de naam van het bedrijf in dat je wilt aanpassen: ");
+        String naam = scanner.nextLine();
+
+        Bedrijf teAanpassen = null;
+        for (Bedrijf b : bedrijven) {
+            if (b.getNaam().equalsIgnoreCase(naam)) {
+                teAanpassen = b;
+                break;
+            }
+        }
+
+        if (teAanpassen == null) {
+            System.out.println("Geen bedrijf gevonden met de naam: " + naam);
+            return;
+        }
+
+        System.out.println("Bedrijf gevonden! Wat wil je aanpassen?");
+        System.out.println("1. Naam");
+        System.out.println("2. Contactpersoon");
+        System.out.println("3. Email");
+        System.out.println("4. Telefoon");
+        System.out.println("5. Adres");
+        System.out.println("6. Omschrijving");
+        System.out.println("7. Zoekterm");
+        System.out.print("Kies een optie: ");
+        int keuze = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (keuze) {
+            case 1:
+                System.out.print("Nieuwe naam: ");
+                teAanpassen.setNaam(scanner.nextLine());
+                break;
+            case 2:
+                System.out.print("Nieuwe contactpersoon: ");
+                teAanpassen.setContactPersoon(scanner.nextLine());
+                break;
+            case 3:
+                System.out.print("Nieuwe email: ");
+                teAanpassen.setEmail(scanner.nextLine());
+                break;
+            case 4:
+                System.out.print("Nieuw telefoonnummer: ");
+                teAanpassen.setTelefoon(scanner.nextLine());
+                break;
+            case 5:
+                System.out.print("Nieuw adres: ");
+                teAanpassen.setAdres(scanner.nextLine());
+                break;
+            case 6:
+                System.out.print("Nieuwe omschrijving: ");
+                teAanpassen.setOmschrijving(scanner.nextLine());
+                break;
+            case 7:
+                System.out.print("Nieuwe zoekterm: ");
+                teAanpassen.setZoekterm(scanner.nextLine());
+                break;
+            default:
+                System.out.println("Ongeldige keuze!");
+                return;
+        }
+
+        System.out.println("Bedrijf is succesvol aangepast!");
     }
 
     // Methode om een bedrijf te verwijderen (alleen admin)
