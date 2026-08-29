@@ -92,7 +92,7 @@ public class Main {
                         System.out.println("Aanpassen... (nog niet geïmplementeerd)");
                         break;
                     case 5:
-                        System.out.println("Verwijderen... (nog niet geïmplementeerd)");
+                        bedrijfVerwijderen(bedrijven, scanner);
                         break;
                     case 6:
                         System.out.println("Uitgelogd!");
@@ -233,5 +233,28 @@ public class Main {
 
         System.out.println("Bedrijf '" + naam + "' is toegevoegd!");
         System.out.println("Totaal aantal bedrijven: " + bedrijven.size());
+    }
+
+    // Methode om een bedrijf te verwijderen (alleen admin)
+    public static void bedrijfVerwijderen(ArrayList<Bedrijf> bedrijven, Scanner scanner) {
+        System.out.println("=== Bedrijf verwijderen ===");
+        System.out.print("Voer de naam van het bedrijf in dat je wilt verwijderen: ");
+        String naam = scanner.nextLine();
+
+        Bedrijf teVerwijderen = null;
+        for (Bedrijf b : bedrijven) {
+            if (b.getNaam().equalsIgnoreCase(naam)) {
+                teVerwijderen = b;
+                break;
+            }
+        }
+
+        if (teVerwijderen == null) {
+            System.out.println("Geen bedrijf gevonden met de naam: " + naam);
+        } else {
+            bedrijven.remove(teVerwijderen);
+            System.out.println("Bedrijf '" + naam + "' is verwijderd!");
+            System.out.println("Totaal aantal bedrijven: " + bedrijven.size());
+        }
     }
 }
