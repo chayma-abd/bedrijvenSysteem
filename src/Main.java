@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -139,6 +140,8 @@ public class Main {
                 resultaten.add(b);
             }
         }
+
+        Collections.sort(resultaten, (b1, b2) -> b1.getNaam().compareToIgnoreCase(b2.getNaam()));
 
         if (resultaten.isEmpty()) {
             System.out.println("Geen bedrijven gevonden voor: " + zoekterm);
